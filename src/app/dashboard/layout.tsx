@@ -14,7 +14,7 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <nav className="flex flex-row justify-between border-b py-1 px-6">
         <Link
           href={"/dashboard"}
@@ -35,6 +35,6 @@ export default function AdminLayout({
         <NavUser />
       </nav>
       {children}
-    </section>
+    </>
   )
 }
