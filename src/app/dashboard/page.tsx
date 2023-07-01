@@ -1,8 +1,28 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card"
 import { Box, LucideIcon } from "lucide-react"
 import { cloneElement } from "react"
+import { getDb } from "~/logic/actions/get-db"
+import { products } from "~/db/schema"
+import { sql } from "drizzle-orm"
 
-export default function AdminPage() {
+async function getStats() {
+  "use server"
+
+  const db = await getDb()
+
+  const productCount = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(products)
+
+  return {
+    productCount: productCount[0].count,
+    // orderCount,
+  }
+}
+
+export default async function AdminPage() {
+  const stats = await getStats()
+
   return (
     <div className="px-8 py-2 max-w-4xl mx-auto">
       <div className="flex flex-row justify-between items-center">
@@ -14,7 +34,7 @@ export default function AdminPage() {
         <StatCard
           title="Total Products"
           icon={<Box />}
-          value="42"
+          value={stats.productCount.toString()}
           compare="+3 products vs last week"
         />
       </div>
