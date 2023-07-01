@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { storeConfig } from "../../../store.config"
 import { NavUser } from "~/components/dashboard/NavUser"
+import Link from "next/link"
 
 export const metadata = {
   title: `${storeConfig.storeName} | Admin`,
@@ -15,15 +16,22 @@ export default function AdminLayout({
   return (
     <section>
       <nav className="flex flex-row justify-between border-b py-1 px-6">
-        <div className="flex flex-row font-bold items-center space-x-4">
+        <Link
+          href={"/dashboard"}
+          className="flex flex-row items-center space-x-4 group"
+        >
           <Image
             alt="store logo"
             src={storeConfig.svgIcon}
             width={50}
             height={50}
           />
-          <h2 className="text-lg">{storeConfig.storeName}</h2>
-        </div>
+          <div className="text-lg flex flex-row space-x-1">
+            <h2 className="font-bold">{storeConfig.storeName}</h2>
+            <span>|</span>
+            <span className="font-normal">admin</span>
+          </div>
+        </Link>
         <NavUser />
       </nav>
       {children}
