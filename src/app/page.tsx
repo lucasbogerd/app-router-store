@@ -1,6 +1,10 @@
 import Image from "next/image"
 import { ProductsOverview } from "~/components/ProductsOverview"
-import { CreateNewProductButton, MigrationsButton } from "~/components/Test"
+import {
+  CreateNewProductButton,
+  DeleteAllProductsButton,
+  MigrationsButton,
+} from "~/components/Test"
 
 export default function Home() {
   return (
@@ -8,6 +12,7 @@ export default function Home() {
       {/* <MigrationsButton /> */}
       <CreateNewProductButton />
       <ProductsOverview />
+      <DeleteAllProductsButton />
     </main>
   )
 }

@@ -28,3 +28,9 @@ export async function getAllProducts() {
 
   return allProducts
 }
+
+export async function deleteAllProducts() {
+  const db = await getDb()
+
+  await db.delete(products)
+}

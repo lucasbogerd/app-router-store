@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
-import { addRandomProduct } from "~/actions/product-actions"
+import { addRandomProduct, deleteAllProducts } from "~/actions/product-actions"
 import { runAllMigrations } from "~/actions/run-migration"
 
 export async function MigrationsButton() {
@@ -34,6 +34,26 @@ export function CreateNewProductButton() {
       }
     >
       Create new product
+    </button>
+  )
+}
+
+export function DeleteAllProductsButton() {
+  let [isPending, startTransition] = useTransition()
+
+  const router = useRouter()
+
+  return (
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      onClick={() =>
+        startTransition(() => {
+          deleteAllProducts()
+          router.refresh()
+        })
+      }
+    >
+      Delete all products
     </button>
   )
 }
