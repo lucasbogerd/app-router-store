@@ -1,9 +1,9 @@
 import Image from "next/image"
 import { storeConfig } from "../../../store.config"
-import { UserButton } from "@clerk/nextjs"
+import { NavUser } from "~/components/dashboard/NavUser"
 
 export const metadata = {
-  title: `${storeConfig.storeName} | Admin}`,
+  title: `${storeConfig.storeName} | Admin`,
   description: `Manage your store's products, orders, and more.`,
 }
 
@@ -22,11 +22,9 @@ export default function AdminLayout({
             width={50}
             height={50}
           />
-          <h2>{storeConfig.storeName}</h2>
+          <h2 className="text-lg">{storeConfig.storeName}</h2>
         </div>
-        <div className="flex flex-row items-center">
-          <UserButton />
-        </div>
+        <NavUser />
       </nav>
       {children}
     </section>
