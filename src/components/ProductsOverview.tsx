@@ -1,4 +1,4 @@
-import { getAllProducts } from "~/actions/product-actions"
+import { getAllProducts } from "~/logic/actions/product-actions"
 
 export async function ProductsOverview() {
   const products = await getAllProducts()

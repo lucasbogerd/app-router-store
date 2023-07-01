@@ -2,8 +2,11 @@
 
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
-import { addRandomProduct, deleteAllProducts } from "~/actions/product-actions"
-import { runAllMigrations } from "~/actions/run-migration"
+import {
+  addRandomProduct,
+  deleteAllProducts,
+} from "~/logic/actions/product-actions"
+import { runAllMigrations } from "~/logic/actions/run-migration"
 
 export async function MigrationsButton() {
   const [isPending, startTransition] = useTransition()
