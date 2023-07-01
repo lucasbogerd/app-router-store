@@ -10,6 +10,7 @@
     "gen": "drizzle-kit generate:mysql"
   },
   "dependencies": {
+    "@clerk/nextjs": "4.21.13",
     "@planetscale/database": "1.8.0",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",

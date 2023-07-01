@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import { ProductsOverview } from "~/components/ProductsOverview"
 import {
@@ -13,6 +14,7 @@ export default function Home() {
       <CreateNewProductButton />
       <ProductsOverview />
       <DeleteAllProductsButton />
+      <UserButton />
     </main>
   )
 }
