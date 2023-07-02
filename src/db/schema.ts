@@ -12,9 +12,7 @@ import {
 export const products = mysqlTable(
   "products",
   {
-    id: text("cuid")
-      .primaryKey()
-      .default(sql`cuid()`),
+    id: serial("id").primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     price: int("price"),
     createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
@@ -27,19 +25,15 @@ export const products = mysqlTable(
 )
 
 export const productVariants = mysqlTable("product_variants", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
-  productId: text("cuid").notNull(),
+  id: serial("id").primaryKey(),
+  productId: int("product_id"),
   name: varchar("name", { length: 255 }).notNull(),
   price: int("price"),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 })
 
-export const customers = mysqlTable("customers", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+export const users = mysqlTable("customers", {
+  id: serial("id").primaryKey(),
   firstName: varchar("first_name", { length: 255 }).notNull(),
   lastName: varchar("last_name", { length: 255 }).notNull(),
   email: varchar("email", { length: 255 }).notNull(),
@@ -48,9 +42,7 @@ export const customers = mysqlTable("customers", {
 })
 
 export const addresses = mysqlTable("addresses", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+  id: serial("id").primaryKey(),
   street: varchar("street", { length: 255 }).notNull(),
   houseNumber: varchar("house_number", { length: 255 }).notNull(),
   postalCode: varchar("postal_code", { length: 255 }).notNull(),
@@ -60,43 +52,33 @@ export const addresses = mysqlTable("addresses", {
 })
 
 export const customer_addresses = mysqlTable("customer_addresses", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
-  customerId: text("cuid").notNull(),
-  addressId: text("cuid").notNull(),
+  id: serial("id").primaryKey(),
+  customerId: int("customer_id").notNull(),
+  addressId: int("address_id").notNull(),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 })
 
 export const categories = mysqlTable("categories", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+  id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 })
 
 export const product_categories = mysqlTable("product_categories", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
-  productId: text("cuid").notNull(),
-  categoryId: text("cuid").notNull(),
+  id: serial("id").primaryKey(),
+  productId: int("product_id").notNull(),
+  categoryId: int("category_id").notNull(),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 })
 
 export const orders = mysqlTable("orders", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+  id: serial("id").primaryKey(),
   userId: int("user_id").notNull(),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),
 })
 
 export const orderItems = mysqlTable("order_items", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+  id: serial("id").primaryKey(),
   orderId: int("order_id").notNull(),
   productVariantId: int("product_variant_id").notNull(),
   quantity: int("quantity").notNull(),
@@ -104,9 +86,7 @@ export const orderItems = mysqlTable("order_items", {
 })
 
 export const orderStatuses = mysqlTable("order_statuses", {
-  id: text("cuid")
-    .default(sql`cuid()`)
-    .primaryKey(),
+  id: serial("id").primaryKey(),
   orderId: int("order_id").notNull(),
   status: varchar("status", { length: 255 }).notNull(),
   createdAt: datetime("created_at").default(sql`CURRENT_TIMESTAMP`),

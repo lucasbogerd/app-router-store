@@ -6,20 +6,19 @@ import {
   addRandomProduct,
   deleteAllProducts,
 } from "~/logic/actions/product-actions"
-import { runAllMigrations } from "~/logic/actions/run-migration"
 
-export async function MigrationsButton() {
-  const [isPending, startTransition] = useTransition()
+// export async function MigrationsButton() {
+//   const [isPending, startTransition] = useTransition()
 
-  return (
-    <button
-      onClick={() => startTransition(() => runAllMigrations())}
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    >
-      Run migrations
-    </button>
-  )
-}
+//   return (
+//     <button
+//       onClick={() => startTransition(() => runAllMigrations())}
+//       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+//     >
+//       Run migrations
+//     </button>
+//   )
+// }
 
 export function CreateNewProductButton() {
   let [isPending, startTransition] = useTransition()

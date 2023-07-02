@@ -4,7 +4,6 @@ import { ProductsOverview } from "~/components/ProductsOverview"
 import {
   CreateNewProductButton,
   DeleteAllProductsButton,
-  MigrationsButton,
 } from "~/components/Test"
 
 export default function Home() {
